@@ -7,7 +7,7 @@ import lcd_curses
 import winstar_weg
 import ssd1306_i2c
 import luma_i2c
-import lumi_spi
+import luma_spi
 import hd44780
 import hd44780_i2c
 import fonts
