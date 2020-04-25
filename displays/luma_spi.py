@@ -24,7 +24,7 @@ from luma.oled.device import ssd1306
 from luma.oled.device import ssd1322
 from luma.oled.device import ssd1325
 from luma.oled.device import ssd1331
-from luma.oled.device import ssd1309
+#from luma.oled.device import ssd1309
 from luma.core.error import DeviceNotFoundError
 
 
@@ -35,7 +35,7 @@ except:
 
 class luma_spi():
 
-	def __init__(self, rows=64, cols=128, spi_port=0, spi_device=0, devicetype=u'ssd1309'):
+	def __init__(self, rows=64, cols=128, spi_port=0, spi_device=0, devicetype=u'ssd1306'):
 
 		
 		self.spi_port = spi_port
@@ -64,8 +64,8 @@ class luma_spi():
 			self.device = ssd1325(serial)
 		elif devicetype.lower() == u'ssd1331':
 			self.device = ssd1331(serial)
-		elif devicetype.lower() == u'ssd1309':
-			self.device = ssd1309(serial)
+#		elif devicetype.lower() == u'ssd1309':
+#			self.device = ssd1309(serial)
 		else:
 			raise ValueError('{0} not a recognized luma device type'.format(devicetype))
 
