@@ -24,7 +24,6 @@ from luma.oled.device import ssd1306
 from luma.oled.device import ssd1322
 from luma.oled.device import ssd1325
 from luma.oled.device import ssd1331
-#from luma.oled.device import ssd1309
 from luma.core.error import DeviceNotFoundError
 
 
@@ -35,11 +34,13 @@ except:
 
 class luma_spi():
 
-	def __init__(self, rows=64, cols=128, spi_port=0, spi_device=0, devicetype=u'ssd1306'):
+	def __init__(self, rows=64, cols=128, spi_device=0, spi_port=0, gpio_DC=24, gpio_RST=25,devicetype=u'ssd1306'):
 
 		
 		self.spi_port = spi_port
 		self.spi_device = spi_device
+		self.gpio_DC = gpio_DC
+		self.gpio_RST = gpio_RST
 
 		self.rows = rows
 		self.cols = cols
@@ -52,7 +53,7 @@ class luma_spi():
 
 		#serial = i2c(port=spi_port, address=spi_device)
 		
-		serial = spi (port = 0, device = 0, gpio_DC = 24, gpio_RST = 25)
+		serial = spi (port = spi_port, device = spi_device, gpio_DC = gpio_DC, gpio_RST = gpio_RST)
 
 		if devicetype.lower() == u'ssd1306':
 			self.device = ssd1306(serial)
@@ -64,8 +65,6 @@ class luma_spi():
 			self.device = ssd1325(serial)
 		elif devicetype.lower() == u'ssd1331':
 			self.device = ssd1331(serial)
-#		elif devicetype.lower() == u'ssd1309':
-#			self.device = ssd1309(serial)
 		else:
 			raise ValueError('{0} not a recognized luma device type'.format(devicetype))
 
@@ -123,9 +122,9 @@ if __name__ == '__main__':
 	logging.basicConfig(format=u'%(asctime)s:%(levelname)s:%(message)s', handlers=[logging.StreamHandler()], level=logging.DEBUG)
 
 	try:
-		opts, args = getopt.getopt(sys.argv[1:],"hr:c:",["row=","col=","spi_device=","spi_port=","devicetype="])
+		opts, args = getopt.getopt(sys.argv[1:],"hr:c:",["row=","col=","spi_device=","spi_port=","devicetype=","gpio_DC","gpio_RST="])
 	except getopt.GetoptError:
-		print 'luma_spi.py -r <rows> -c <cols> --devicetype <devicetype> --spi_device <dev> --spi_port <port>'
+		print 'luma_spi.py -r <rows> -c <cols> --devicetype <devicetype> --spi_device <dev> --spi_port <port> --gpio_DC <gpio_DC> --gpio_RST <gpio_RST>'
 		sys.exit(2)
 
 	# Set defaults
@@ -133,11 +132,13 @@ if __name__ == '__main__':
 	cols = 128
 	spi_device = 0
 	spi_port = 0
+	gpio_DC = 24
+	gpio_RST = 25
 	devicetype = u'ssd1306'
 
 	for opt, arg in opts:
 		if opt == '-h':
-			print 'luma_spi.py -r <rows> -c <cols> --devicetype <devicetype> --spi_device <addr> --spi_port <port>\nDevice types can be sh1106, ssd1306, ssd1309, ssd1322, ssd1325, and ssd1331'
+			print 'luma_spi.py -r <rows> -c <cols> --devicetype <devicetype> --spi_device <addr> --spi_port <port> --gpio_DC <gpio_DC> --gpio_RST <gpio_RST>\nDevice types can be sh1106, ssd1306, ssd1322, ssd1325, and ssd1331'
 			sys.exit()
 		elif opt in ("-r", "--rows"):
 			rows = int(arg)
@@ -149,6 +150,10 @@ if __name__ == '__main__':
 			spi_device  = int(arg)
 		elif opt in ("--spi_port"):
 			spi_port  = int(arg)
+		elif opt in ("--gpio_DC"):
+			gpio_DC  = int(arg)
+		elif opt in ("--gpio_RST"):
+			gpio_RST  = int(arg)
 
 	db = {
 			'actPlayer':'mpd',
@@ -217,7 +222,7 @@ if __name__ == '__main__':
 		print "LUMA OLED Display Test"
 		print "ROWS={0}, COLS={1}, DEVICETYPE={4}, spi_device={2}, spi_port={3}".format(rows,cols,spi_device,spi_port,devicetype)
 
-		lcd = luma_spi(rows,cols,spi_device,spi_port,devicetype)
+		lcd = luma_spi(rows,cols,spi_device,spi_port,gpio_DC,gpio_RST,devicetype)
 
 		DISPLAY_OK = True
 
