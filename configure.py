@@ -31,7 +31,7 @@ if __name__ == u'__main__':
                 {
                     'prompt': 'Display type?',
                     'variable': 'DISPLAY_DRIVER',
-                    'allowed': [ 'winstar_weg', 'hd44780', 'hd44780_i2c', 'hd44780_mcp23008', 'luma_i2c' ],
+                    'allowed': [ 'winstar_weg', 'hd44780', 'hd44780_i2c', 'hd44780_mcp23008', 'luma_i2c', 'luma_spi' ],
                     'help': 'Configures pydPiper for the display type you have installed',
                     'followup_questions': {
                         '^winstar_weg$|^hd44780$':
@@ -51,6 +51,12 @@ if __name__ == u'__main__':
                         '^luma_i2c$':
                             [
                                 { 'prompt': 'Type of Display?', 'variable': 'DISPLAY_DEVICETYPE', 'allowed': ['ssd1306', 'sh1106', 'ssd1322', 'ssd1325', 'ssd1331'], 'default': 'ssd1306', 'help': 'What is the display device type' },
+                                { 'prompt': 'Width of display (in pixels)?', 'variable': 'DISPLAY_WIDTH', 'default': '128', 'help': 'What is the horizontal resolution of the display in pixels' },
+                                { 'prompt': 'Height of display (in pixels)?', 'variable': 'DISPLAY_HEIGHT', 'default': '64', 'help': 'What is the vertical resolution of the display in pixels' },
+                            ],
+                        '^luma_spi$':
+                            [
+                                { 'prompt': 'Type of Display?', 'variable': 'DISPLAY_DEVICETYPE', 'allowed': ['ssd1309','ssd1306', 'sh1106', 'ssd1322', 'ssd1325', 'ssd1331'], 'default': 'ssd1309', 'help': 'What is the display device type' },
                                 { 'prompt': 'Width of display (in pixels)?', 'variable': 'DISPLAY_WIDTH', 'default': '128', 'help': 'What is the horizontal resolution of the display in pixels' },
                                 { 'prompt': 'Height of display (in pixels)?', 'variable': 'DISPLAY_HEIGHT', 'default': '64', 'help': 'What is the vertical resolution of the display in pixels' },
                             ],
