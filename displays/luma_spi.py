@@ -131,7 +131,9 @@ if __name__ == '__main__':
 	# Set defaults
 	rows = 64
 	cols = 128
-	devicetype = u'ssd1309'
+	spi_device = 0
+	spi_port = 0
+	devicetype = u'ssd1306'
 
 	for opt, arg in opts:
 		if opt == '-h':
