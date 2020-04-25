@@ -756,7 +756,7 @@ if __name__ == u'__main__':
     elif driver == u"luma_i2c":
         lcd = displays.luma_i2c.luma_i2c(rows, cols, i2c_address, i2c_port, devicetype)
     elif driver == u"luma_spi":
-        lcd = display.luma_spi.luma_spi(rows, cols, spi_device, spi_port, gpio_DC, gpio_RST, devicetype)
+        lcd = displays.luma_spi.luma_spi(rows, cols, spi_device, spi_port, gpio_DC, gpio_RST, devicetype)
     elif driver == u"lcd_curses":
         lcd = displays.lcd_curses.lcd_curses(rows, cols)
     else:
