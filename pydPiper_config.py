@@ -33,6 +33,11 @@ DISPLAY_I2C_ADDRESS = int(i2c_address) if i2c_address and 'x' not in i2c_address
 DISPLAY_I2C_PORT = int(safeget(config,'DISPLAY', 'display_i2c_port',0))
 DISPLAY_ENABLE_DURATION = float(safeget(config,'DISPLAY', 'display_enable_duration',0)) # in microseconds.  Decrease to increase performance.  Increase to improve display stability
 
+DISPLAY_SPI_DEVICE = int(safeget(config,'DISPLAY', 'display_spi_device',0))
+DISPLAY_SPI_PORT = int(safeget(config,'DISPLAY', 'display_spi_port',0))
+DISPLAY_GPIO_DC = int(safeget(config,'DISPLAY', 'display_gpio_dc',0))
+DISPLAY_GPIO_RST = int(safeget(config,'DISPLAY', 'display_gpio_rst',0))
+
 # Page Parameters
 PAGEFILE = safeget(config, 'DISPLAY', 'pagefile')
 ANIMATION_SMOOTHING = float(safeget(config,'DISPLAY', 'animation_smoothing',0)) # Amount of time in seconds to wait before repainting display

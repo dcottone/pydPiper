@@ -611,9 +611,9 @@ if __name__ == u'__main__':
     loggingPIL.setLevel( logging.WARN )
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:],u"d:",[u"driver=",u"devicetype=",u"width=",u"height=","rs=","e=","d4=","d5=","d6=","d7=","i2caddress=","i2cport=" ,u"wapi=", u"wlocale=", u"timezone=", u"temperature=", u"lms",u"mpd",u"spop",u"rune",u"volumio",u"pages=", u"lmsplayer=", u"showupdates"])
+        opts, args = getopt.getopt(sys.argv[1:],u"d:",[u"driver=",u"devicetype=",u"width=",u"height=","rs=","e=","d4=","d5=","d6=","d7=","i2caddress=","i2cport=", "spidevice=", "spiport=", "gpioDC=", "gpioRST=" ,u"wapi=", u"wlocale=", u"timezone=", u"temperature=", u"lms",u"mpd",u"spop",u"rune",u"volumio",u"pages=", u"lmsplayer=", u"showupdates"])
     except getopt.GetoptError:
-        print u'pydPiper.py -d <driver> --devicetype <devicetype (for LUMA devices)> --width <width in pixels> --height <height in pixels> --rs <rs> --e <e> --d4 <d4> --d5 <d5> --d6 <d6> --d7 <d7> --i2caddress <i2c address> --i2cport <i2c port> --wapi <weather underground api key> --wlocale <weather location> --timezone <timezone> --temperature <fahrenheit or celsius> --mpd --spop --lms --rune --volumio --pages <pagefile> --lmsplayer <mac address of lms player> --showupdates'
+        print u'pydPiper.py -d <driver> --devicetype <devicetype (for LUMA devices)> --width <width in pixels> --height <height in pixels> --rs <rs> --e <e> --d4 <d4> --d5 <d5> --d6 <d6> --d7 <d7> --i2caddress <i2c address> --i2cport <i2c port> --spidevice <spi dev> --spiport <spi port> --gpioDC <spi gpio DC> --gpioRST <spi gpio RST> --wapi <weather underground api key> --wlocale <weather location> --timezone <timezone> --temperature <fahrenheit or celsius> --mpd --spop --lms --rune --volumio --pages <pagefile> --lmsplayer <mac address of lms player> --showupdates'
         sys.exit(2)
 
     services_list = [ ]
@@ -629,6 +629,10 @@ if __name__ == u'__main__':
     cols = pydPiper_config.DISPLAY_WIDTH
     i2c_address = pydPiper_config.DISPLAY_I2C_ADDRESS
     i2c_port = pydPiper_config.DISPLAY_I2C_PORT
+    spi_device = pydPiper_config.DISPLAY_SPI_DEVICE
+    spi_port = pydPiper_config.DISPLAY_SPI_PORT
+    gpio_DC = pydPiper_config.DISPLAY_GPIO_DC
+    gpio_RST = pydPiper_config.DISPLAY_GPIO_RST
     enable = pydPiper_config.DISPLAY_ENABLE_DURATION
     driver = pydPiper_config.DISPLAY_DRIVER
     pagefile = pydPiper_config.PAGEFILE
@@ -637,7 +641,7 @@ if __name__ == u'__main__':
 
     for opt, arg in opts:
         if opt == u'-h':
-            print u'pydPiper.py -d <driver> --devicetype <devicetype e.g. ssd1306, sh1106> --width <width in pixels> --height <height in pixels> --rs <rs> --e <e> --d4 <d4> --d5 <d5> --d6 <d6> --d7 <d7> --i2caddress <i2c address> --i2cport <i2c port> --enable <enable duration> --wapi <weather underground api key> --wlocale <weather location> --timezone <timezone> --temperature <fahrenheit or celsius> --mpd --spop --lms --rune --volumio --pages <pagefile> --lmsplayer <mac address of lms player> --showupdates'
+            print u'pydPiper.py -d <driver> --devicetype <devicetype e.g. ssd1306, sh1106> --width <width in pixels> --height <height in pixels> --rs <rs> --e <e> --d4 <d4> --d5 <d5> --d6 <d6> --d7 <d7> --i2caddress <i2c address> --i2cport <i2c port> --spidevice <spi dev> --spiport <spi port> --gpioDC <spi gpio DC> --gpioRST <spi gpio RST> --enable <enable duration> --wapi <weather underground api key> --wlocale <weather location> --timezone <timezone> --temperature <fahrenheit or celsius> --mpd --spop --lms --rune --volumio --pages <pagefile> --lmsplayer <mac address of lms player> --showupdates'
             sys.exit()
         elif opt in (u"-d", u"--driver"):
             driver = arg
@@ -659,6 +663,14 @@ if __name__ == u'__main__':
             i2c_address = int(arg,0)
         elif opt in ("--i2cport"):
             i2c_port = int(arg,0)
+        elif opt in ("--spidevice"):
+            spi_device = int(arg,0)
+        elif opt in ("--spiport"):
+            spi_port = int(arg,0)
+        elif opt in ("--gpioDC"):
+            gpio_DC = int(arg,0)
+        elif opt in ("--gpioRST"):
+            gpio_RST = int(arg,0)
         elif opt in ("--width"):
             cols = int(arg,0)
         elif opt in ("--height"):
@@ -743,6 +755,8 @@ if __name__ == u'__main__':
         lcd = displays.ssd1306_i2c.ssd1306_i2c(rows, cols, i2c_address, i2c_port)
     elif driver == u"luma_i2c":
         lcd = displays.luma_i2c.luma_i2c(rows, cols, i2c_address, i2c_port, devicetype)
+    elif drive == u"luma_spi"
+        lcd = display.luma_spi.luma_spi(rows, cols, spi_device, spi_port, gpio_DC, gpio_RST, devicetype)
     elif driver == u"lcd_curses":
         lcd = displays.lcd_curses.lcd_curses(rows, cols)
     else:

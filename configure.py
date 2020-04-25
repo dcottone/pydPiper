@@ -56,9 +56,13 @@ if __name__ == u'__main__':
                             ],
                         '^luma_spi$':
                             [
-                                { 'prompt': 'Type of Display?', 'variable': 'DISPLAY_DEVICETYPE', 'allowed': ['ssd1309','ssd1306', 'sh1106', 'ssd1322', 'ssd1325', 'ssd1331'], 'default': 'ssd1309', 'help': 'What is the display device type' },
+                                { 'prompt': 'Type of Display?', 'variable': 'DISPLAY_DEVICETYPE', 'allowed': ['ssd1306', 'sh1106', 'ssd1322', 'ssd1325', 'ssd1331'], 'default': 'ssd1306', 'help': 'What is the display device type' },
                                 { 'prompt': 'Width of display (in pixels)?', 'variable': 'DISPLAY_WIDTH', 'default': '128', 'help': 'What is the horizontal resolution of the display in pixels' },
                                 { 'prompt': 'Height of display (in pixels)?', 'variable': 'DISPLAY_HEIGHT', 'default': '64', 'help': 'What is the vertical resolution of the display in pixels' },
+                                { 'prompt': 'SPI Device of display ?', 'variable': 'DISPLAY_SPI_DEVICE', 'default': '0', 'help': 'What SPI device is the display connected to' },
+                                { 'prompt': 'SPI Port of display ?', 'variable': 'DISPLAY_SPI_PORT', 'default': '0', 'help': 'What SPI port is the display connected to' },
+                                { 'prompt': 'GPIO DC of display ?', 'variable': 'DISPLAY_GPIO_DC', 'default': '24', 'help': 'What GPIO pin is the display data/command select (DC) connected to' },
+                                { 'prompt': 'GPIO RST of display ?', 'variable': 'DISPLAY_GPIO_RST', 'default': '24', 'help': 'What GPIO pin is the display reset (RES / RST) connected to' },
                             ],
                         '^winstar_weg$':
                             [
