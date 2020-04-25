@@ -62,7 +62,7 @@ if __name__ == u'__main__':
                                 { 'prompt': 'SPI Device of display ?', 'variable': 'DISPLAY_SPI_DEVICE', 'default': '0', 'help': 'What SPI device is the display connected to' },
                                 { 'prompt': 'SPI Port of display ?', 'variable': 'DISPLAY_SPI_PORT', 'default': '0', 'help': 'What SPI port is the display connected to' },
                                 { 'prompt': 'GPIO DC of display ?', 'variable': 'DISPLAY_GPIO_DC', 'default': '24', 'help': 'What GPIO pin is the display data/command select (DC) connected to' },
-                                { 'prompt': 'GPIO RST of display ?', 'variable': 'DISPLAY_GPIO_RST', 'default': '24', 'help': 'What GPIO pin is the display reset (RES / RST) connected to' },
+                                { 'prompt': 'GPIO RST of display ?', 'variable': 'DISPLAY_GPIO_RST', 'default': '25', 'help': 'What GPIO pin is the display reset (RES / RST) connected to' },
                             ],
                         '^winstar_weg$':
                             [
