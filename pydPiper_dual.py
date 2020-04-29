@@ -615,7 +615,9 @@ if __name__ == u'__main__':
 
     services_list = [ ]
     driver_1 = ''
+    driver_2 = ''
     devicetype_1 = ''
+    devicetype_2 = ''
     showupdates = False
     pagefile_1 = 'pages.py'
     pagefile_2 = 'pages.py'
