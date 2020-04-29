@@ -33,12 +33,14 @@ WIDGETS = {
 	'samplerate': { 'type':'text', 'format':'{0}', 'variables':['samplerate'], 'font':'small', 'just':'center','varwidth':True},
 	'bitdepth': { 'type':'text', 'format':'{0}', 'variables':['bitdepth'], 'font':'small', 'just':'center','varwidth':True},
 	'time': { 'type':'text', 'format':'{0}', 'variables':['time'], 'font':'large', 'just':'right', 'varwidth':True, 'size':(45,16) },
-	'ampm': { 'type':'text', 'format':'{0}', 'variables':['timeampm'], 'font':'tiny', 'varwidth':True },
+	'playstopstatus': { 'type':'text', 'format':'{0}', 'variables':['state|select+play+\ue000 Play+stop+\ue001 Stop'], 'font':'large', 'just':'left', 'size':(60,16) },
+	'randomstatus': { 'type':'text', 'format':'{0}', 'variables':['random_onoff|select+On+\ue002+Off+\u0020'], 'font':'large', 'just':'left', 'size':(10,16) },
+	'nowplaying': { 'type':'text', 'format':'{0}', 'variables':['actPlayer|upper'], 'font':'small', 'varwidth':True},
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
-	'left_panel_normal': { 'widgets': [ ('volume',4,47), ('volumebar',4,56), ('time',72,0), ('ampm',118,1) ], 'size':(128,64) }
+	'left_panel_normal': { 'widgets': [ ('nowplaying',1,0), ('volume',1,47), ('volumebar',1,56), ('playstopstatus',74,0), ('randomstatus',115,18) ], 'size':(128,64) },
 }
 
 # Place the canvases into sequences to display when their condition is met
@@ -59,5 +61,5 @@ SEQUENCES = [
 		'coordinates':(0,0),
 		'canvases': [ { 'name':'left_panel_normal', 'duration':99999,'conditional':"db['outside_conditions']=='No data'" } ],
 		'conditional':"not db['state']=='starting'"
-	}
+	},
 ]
