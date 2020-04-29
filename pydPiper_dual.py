@@ -862,8 +862,8 @@ if __name__ == u'__main__':
     time.sleep(2)
     mc_1.start()
     mc_2.start()
-    dc_1.load(pagefile, mc_1.musicdata,mc_1.musicdata_prev )
-    dc_2.load(pagefile, mc_2.musicdata,mc_2.musicdata_prev )
+    dc_1.load(pagefile_1, mc_1.musicdata,mc_1.musicdata_prev )
+    dc_2.load(pagefile_2, mc_2.musicdata,mc_2.musicdata_prev )
 
     try:
         while True:
