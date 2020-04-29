@@ -16,7 +16,8 @@ FONTS = {
 }
 
 TRUETYPE_FONTS = {
-	'DejaVuSans28': { 'file':'DejaVuSans.ttf', 'size':28 },
+	'GraphikBold28': { 'file':'/app/fonts/GraphikBold.otf', 'size':28 },
+	'GraphikThin28': { 'file':'/app/fonts/GraphikThin.otf', 'size':28 },
 }
 
 IMAGES = {
@@ -26,21 +27,13 @@ IMAGES = {
 
 # Load the Widgets that will be used to produce the display pages
 WIDGETS = {
-	'splash': { 'type':'text', 'format':'DCAudio\nStreamer', 'font':'large' },
-	'volume': { 'type':'text', 'format':'Volume: {0}', 'variables':['volume'], 'font':'small', 'just':'left', 'size':(60,8), 'varwidth':True },
-	'volumelarge': { 'type':'text', 'format':'Volume: {0}', 'variables':['volume'], 'font':'large', 'just':'left', 'varwidth':True },
-	'volumebar': { 'type':'progressbar', 'value':'volume', 'rangeval':(0,100), 'size':(120,8) },
-	'samplerate': { 'type':'text', 'format':'{0}', 'variables':['samplerate'], 'font':'small', 'just':'center','varwidth':True},
-	'bitdepth': { 'type':'text', 'format':'{0}', 'variables':['bitdepth'], 'font':'small', 'just':'center','varwidth':True},
-	'time': { 'type':'text', 'format':'{0}', 'variables':['time'], 'font':'large', 'just':'right', 'varwidth':True, 'size':(45,16) },
-	'playstopstatus': { 'type':'text', 'format':'{0}', 'variables':['state|select+play+\ue000 Play+stop+\ue001 Stop'], 'font':'large', 'just':'left', 'size':(60,16) },
-	'randomstatus': { 'type':'text', 'format':'{0}', 'variables':['random_onoff|select+On+\ue002+Off+\u0020'], 'font':'large', 'just':'left', 'size':(10,16) },
-	'nowplaying': { 'type':'text', 'format':'{0}', 'variables':['actPlayer|upper'], 'font':'small', 'varwidth':True},
+	'splashDCaudio': { 'type':'ttext', 'format':'DCaudio', 'font':'GraphikBold28' },
+	'splashStreamer': { 'type':'ttext', 'format':'Streamer', 'font':'GraphikThin28' },
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
-	'left_panel_normal': { 'widgets': [ ('nowplaying',1,0), ('volume',1,47), ('volumebar',1,56), ('playstopstatus',74,0), ('randomstatus',115,18) ], 'size':(128,64) },
+	'splashLogo': { 'widgets': [ ('splashDCaudio',1,1), ('splashStreamer',3,35) ], 'size':(128,64) },
 }
 
 # Place the canvases into sequences to display when their condition is met
@@ -53,13 +46,7 @@ CANVASES = {
 # To access the most recent previous state of a variable, refer to them within the dbp dictionary (e.g. dbp['title'])
 SEQUENCES = [
 	{       'name': 'seqSplash', 
-		'canvases': [ { 'name':'splash', 'duration':30 } ], 
+		'canvases': [ { 'name':'splashLogo', 'duration':30 } ], 
 		'conditional':"db['state']=='starting'"
-	},
-	{
-		'name':'seqNormal',
-		'coordinates':(0,0),
-		'canvases': [ { 'name':'left_panel_normal', 'duration':99999,'conditional':"db['outside_conditions']=='No data'" } ],
-		'conditional':"not db['state']=='starting'"
-	},
+	}
 ]

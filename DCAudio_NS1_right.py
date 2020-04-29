@@ -16,7 +16,8 @@ FONTS = {
 }
 
 TRUETYPE_FONTS = {
-	'DejaVuSans28': { 'file':'DejaVuSans.ttf', 'size':28 }
+	'GraphikBold48': { 'file':'/app/fonts/GraphikBold.otf', 'size':48 },
+	'GraphikThin48': { 'file':'/app/fonts/GraphikThin.otf', 'size':48 }
 }
 
 IMAGES = {
@@ -26,29 +27,13 @@ IMAGES = {
 
 # Load the Widgets that will be used to produce the display pages
 WIDGETS = {
-	'xofy': { 'type':'text', 'format':'{0}/{1}', 'variables':['playlist_position', 'playlist_length'], 'font':'small', 'size':(58,16), 'varwidth':True },
-	'volume': { 'type':'text', 'format':'Volume: {0}', 'variables':['volume'], 'font':'small', 'just':'right', 'size':(60,16), 'varwidth':True },
-	'volumelarge': { 'type':'text', 'format':'Volume: {0}', 'variables':['volume'], 'font':'large', 'just':'left', 'varwidth':True },
-	'volumebar': { 'type':'progressbar', 'value':'volume', 'rangeval':(0,100), 'size':(115,8) },
-	'artist': { 'type':'text', 'format':'{0}', 'variables':['artist'], 'font':'large','varwidth':True,'effect':('scroll','left',1,1,20,'onloop',3,125)},
-	'title': { 'type':'text', 'format':'{0}', 'variables':['title'], 'font':'small','varwidth':True,'effect':('scroll','left',1,1,20,'onloop',3,125)},
-	'samplerate': { 'type':'text', 'format':'{0}', 'variables':['samplerate'], 'font':'small', 'just':'center','varwidth':True},
-	'bitdepth': { 'type':'text', 'format':'{0}', 'variables':['bitdepth'], 'font':'small', 'just':'center','varwidth':True},
-	'elapsed': { 'type':'text', 'format':'{0}', 'variables':['elapsed|strftime+%-M:%S'], 'font':'small','size':(30,8), 'varwidth':True},
-	'length': { 'type':'text', 'format':'{0}', 'variables':['length|strftime+%-M:%S'], 'font':'small','size':(30,8),'just':'right','varwidth':True},
-	'songprogress': { 'type':'progressbar', 'value':'elapsed', 'rangeval':(0,'length'), 'size':(62,8) },
-	'tempsmall': { 'type':'text', 'format':'{0}', 'variables':['outside_temp_formatted'], 'font':'small', 'just':'right', 'size':(24,16) },
-	'temphilow': { 'type':'text', 'format':'H {0}\nL {1}', 'variables':['outside_temp_max|int', 'outside_temp_min|int'], 'font':'small', 'just':'right', 'size':(25,16) },
-	'temp': { 'type':'text', 'format':'{0}', 'variables':['outside_temp_formatted'], 'font':'large', 'just':'center', 'size':(80,16) },
-	'weather': { 'type':'text', 'format':'{0}', 'variables':['outside_conditions|capitalize'], 'font':'large','varwidth':True, 'effect':('scroll','left',1,1,20,'onloop',3,100)}
+	'splash_NS': { 'type':'ttext', 'format':'NS', 'font':'GraphikThin48' },
+	'splash_1': { 'type':'ttext', 'format':'1', 'font':'GraphikBold48' },
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
-	'playing': { 'widgets': [ ('xofy',3,0), ('artist',3,10), ('title',3,26), ('bitdepth',22,45), ('samplerate',78,45), ('elapsed',3,56), ('length',98,56), ('songprogress',33,56) ], 'size':(128,64) },
-	'blank': { 'widgets': [], 'size':(128,64) },
-	'stoptime': { 'widgets': [ ('ttime',10,2) ], 'size':(128,64) },
-	'stoptimetemp_popup': { 'widgets': [ ('ttime',3,0), ('tempsmall',100,0), ('weather',8,47), ('temphilow',100,48) ], 'size':(128,64) }
+	'splashLogo': { 'widgets': [ ('splash_NS',20,8), ('splash_1',80,8) ], 'size':(128,64) },
 }
 
 # Place the canvases into sequences to display when their condition is met
@@ -60,22 +45,8 @@ CANVASES = {
 # To access system variables, refer to them within the db dictionary (e.g. db['title'])
 # To access the most recent previous state of a variable, refer to them within the dbp dictionary (e.g. dbp['title'])
 SEQUENCES = [
-	{       'name': 'seqSplash',
-                'canvases': [ { 'name':'blank', 'duration':30 } ],
-                'conditional':"db['state']=='starting'"
-        },
-	{
-		'name': 'seqPlay',
-		'canvases': [
-			{ 'name':'playing', 'duration':999, 'conditional':'True' }
-		],
-		'conditional': "db['state']=='play'"
-	},
-        {
-                'name': 'seqStop',
-                'canvases': [
-                        { 'name':'blank', 'duration':9999}
-                ],
-                'conditional': "db['state']=='stop' or db['state']=='pause'"
-        }
+	{       'name': 'seqSplash', 
+		'canvases': [ { 'name':'splashLogo', 'duration':30 } ], 
+		'conditional':"db['state']=='starting'"
+	}
 ]
