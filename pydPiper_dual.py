@@ -614,10 +614,11 @@ if __name__ == u'__main__':
         sys.exit(2)
 
     services_list = [ ]
-    driver = ''
-    devicetype = ''
+    driver_1 = ''
+    devicetype_1 = ''
     showupdates = False
-    pagefile = 'pages.py'
+    pagefile_1 = 'pages.py'
+    pagefile_2 = 'pages.py'
 
     pin_rs_1 = pydPiper_config_dual.DISPLAY_1_PIN_RS
     pin_e_1 = pydPiper_config_dual.DISPLAY_1_PIN_E
