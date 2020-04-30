@@ -38,7 +38,7 @@ WIDGETS = {
 CANVASES = {
 	'splashLogo': { 'widgets': [ ('splashDCaudio',1,1), ('splashStreamer',3,35) ], 'size':(128,64) },
 	'playing': { 'widgets': [ ('artist',0,23) ], 'size':(128,64) },
-
+	'blank': { 'widgets': [], 'size':(128,64) },
 }
 
 # Place the canvases into sequences to display when their condition is met
