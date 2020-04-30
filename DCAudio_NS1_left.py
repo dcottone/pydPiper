@@ -18,7 +18,7 @@ FONTS = {
 TRUETYPE_FONTS = {
 	'GraphikBold28': { 'file':'/app/fonts/GraphikBold.otf', 'size':28 },
 	'GraphikThin28': { 'file':'/app/fonts/GraphikThin.otf', 'size':28 },
-    'GraphikRegular16': { 'file':'/app/fonts/GraphikRegular.otf', 'size':16 }
+    'GraphikMedium18': { 'file':'/app/fonts/GraphikMedium.otf', 'size':18 }
 
 }
 
@@ -31,13 +31,13 @@ IMAGES = {
 WIDGETS = {
 	'splashDCaudio': { 'type':'ttext', 'format':'DCaudio', 'font':'GraphikBold28' },
 	'splashStreamer': { 'type':'ttext', 'format':'Streamer', 'font':'GraphikThin28' },
-	'artist': { 'type':'ttext', 'format':'{0}', 'variables':['artist'], 'font':'GraphikRegular16','varwidth':True, 'just':'center', 'effect':('scroll','left',1,1,20,'onloop',3,128), 'size':(128,16)}
+	'artist': { 'type':'ttext', 'format':'{0}', 'variables':['artist'], 'font':'GraphikRegular16', 'just':'center', 'effect':('scroll','left',1,1,20,'onloop',3,128), 'size':(128,16)}
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
 	'splashLogo': { 'widgets': [ ('splashDCaudio',1,1), ('splashStreamer',3,35) ], 'size':(128,64) },
-	'playing': { 'widgets': [ ('artist',1,24) ], 'size':(128,64) },
+	'playing': { 'widgets': [ ('artist',0,23) ], 'size':(128,64) },
 
 }
 
