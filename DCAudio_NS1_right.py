@@ -33,7 +33,7 @@ WIDGETS = {
 	'title': { 'type':'ttext', 'format':'{0}', 'variables':['title'], 'font':'GraphikMedium18','just':'center','effect':('scroll','left',1,1,20,'onloop',3,128),'size':(128,18)},
 	'elapsed': { 'type':'text', 'format':'{0}', 'variables':['elapsed|strftime+%-M:%S'], 'font':'small','size':(25,8), 'varwidth':True},
 	'length': { 'type':'text', 'format':'{0}', 'variables':['length|strftime+%-M:%S'], 'font':'small','size':(25,8),'just':'right','varwidth':True},
-	'remaining': { 'type':'text', 'format':'{0}', 'variables':['remaining|strftime+%-M:%S'], 'font':'small','size':(25,8),'just':'right','varwidth':True},
+	'remaining': { 'type':'text', 'format':'{0}', 'variables':['remaining'], 'font':'small','size':(25,8),'just':'right','varwidth':True},
 	'songprogress': { 'type':'progressbar', 'value':'elapsed', 'rangeval':(0,'length'), 'size':(128,4) },
 }
 
