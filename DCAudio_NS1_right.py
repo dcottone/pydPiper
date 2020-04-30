@@ -41,7 +41,7 @@ WIDGETS = {
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
 	'splashLogo': { 'widgets': [ ('splash_NS',20,8), ('splash_1',80,8) ], 'size':(128,64) },
-	'playing': { 'widgets': [ ('title',0,23), ('elapsed',0,47), ('length',103,47), ('songprogress',0,60) ], 'size':(128,64) },
+	'playing': { 'widgets': [ ('title',0,23), ('elapsed',0,47), ('length',98,47), ('songprogress',0,60) ], 'size':(128,64) },
 }
 
 # Place the canvases into sequences to display when their condition is met
