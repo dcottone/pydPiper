@@ -19,6 +19,7 @@ TRUETYPE_FONTS = {
 	'GraphikBold48': { 'file':'/app/fonts/GraphikBold.otf', 'size':48 },
 	'GraphikThin48': { 'file':'/app/fonts/GraphikThin.otf', 'size':48 },
 	'GraphikMedium18': { 'file':'/app/fonts/GraphikMedium.otf', 'size':18 },
+	'GraphikRegular12': { 'file':'/app/fonts/GraphikRegular.otf', 'size':12 },
 }
 
 IMAGES = {
@@ -31,8 +32,8 @@ WIDGETS = {
 	'splash_NS': { 'type':'ttext', 'format':'NS', 'font':'GraphikThin48' },
 	'splash_1': { 'type':'ttext', 'format':'1', 'font':'GraphikBold48' },
 	'title': { 'type':'ttext', 'format':'{0}', 'variables':['title'], 'font':'GraphikMedium18','just':'center','effect':('scroll','left',1,1,20,'onloop',3,128),'size':(128,18)},
-	'elapsed': { 'type':'text', 'format':'{0}', 'variables':['elapsed|strftime+%-M:%S'], 'font':'small','size':(25,8), 'varwidth':True},
-	'length': { 'type':'text', 'format':'{0}', 'variables':['length|strftime+%-M:%S'], 'font':'small','size':(25,8),'just':'right','varwidth':True},
+	'elapsed': { 'type':'ttext', 'format':'{0}', 'variables':['elapsed|strftime+%-M:%S'], 'font':'GraphikRegular12','size':(30,12), 'varwidth':True},
+	'length': { 'type':'ttext', 'format':'{0}', 'variables':['length|strftime+%-M:%S'], 'font':'GraphikRegular12','size':(30,12),'just':'right','varwidth':True},
 	'songprogress': { 'type':'progressbar', 'value':'elapsed', 'rangeval':(0,'length'), 'size':(128,4) },
 }
 
@@ -40,7 +41,7 @@ WIDGETS = {
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
 	'splashLogo': { 'widgets': [ ('splash_NS',20,8), ('splash_1',80,8) ], 'size':(128,64) },
-	'playing': { 'widgets': [ ('title',0,23), ('elapsed',0,51), ('length',103,51), ('songprogress',0,60) ], 'size':(128,64) },
+	'playing': { 'widgets': [ ('title',0,23), ('elapsed',0,47), ('length',103,47), ('songprogress',0,60) ], 'size':(128,64) },
 }
 
 # Place the canvases into sequences to display when their condition is met
