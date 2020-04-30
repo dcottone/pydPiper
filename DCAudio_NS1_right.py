@@ -48,8 +48,16 @@ CANVASES = {
 # To access system variables, refer to them within the db dictionary (e.g. db['title'])
 # To access the most recent previous state of a variable, refer to them within the dbp dictionary (e.g. dbp['title'])
 SEQUENCES = [
-	{       'name': 'seqSplash', 
+	{       
+		'name': 'seqSplash', 
 		'canvases': [ { 'name':'splashLogo', 'duration':30 } ], 
 		'conditional':"db['state']=='starting'"
+	},
+	{
+		'name': 'seqPlay',
+		'canvases': [
+			{ 'name':'playing', 'duration':9999, 'conditional':'True' }
+		],
+		'conditional': "db['state']=='play'"
 	}
 ]
