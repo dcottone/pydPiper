@@ -18,6 +18,7 @@ FONTS = {
 TRUETYPE_FONTS = {
 	'GraphikBold28': { 'file':'/app/fonts/GraphikBold.otf', 'size':28 },
 	'GraphikThin28': { 'file':'/app/fonts/GraphikThin.otf', 'size':28 },
+	'GraphikRegular16': { 'file':'/app/fonts/GraphikRegular.otf', 'size':16 },
 }
 
 IMAGES = {
@@ -29,11 +30,13 @@ IMAGES = {
 WIDGETS = {
 	'splashDCaudio': { 'type':'ttext', 'format':'DCaudio', 'font':'GraphikBold28' },
 	'splashStreamer': { 'type':'ttext', 'format':'Streamer', 'font':'GraphikThin28' },
+	'artist': { 'type':'ttext', 'format':'{0}', 'variables':['artist'], 'font':'GraphikRegular16','just':'center','varwidth':True,'effect':('scroll','left',1,1,20,'onloop',3,125)},
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
 	'splashLogo': { 'widgets': [ ('splashDCaudio',1,1), ('splashStreamer',3,35) ], 'size':(128,64) },
+	'playing': { 'widgets': [ ('artist',1,24), ('splashStreamer',3,35) ], 'size':(128,16) },
 }
 
 # Place the canvases into sequences to display when their condition is met
@@ -45,8 +48,16 @@ CANVASES = {
 # To access system variables, refer to them within the db dictionary (e.g. db['title'])
 # To access the most recent previous state of a variable, refer to them within the dbp dictionary (e.g. dbp['title'])
 SEQUENCES = [
-	{       'name': 'seqSplash', 
+	{       
+		'name': 'seqSplash', 
 		'canvases': [ { 'name':'splashLogo', 'duration':30 } ], 
 		'conditional':"db['state']=='starting'"
+	},
+	{
+		'name': 'seqPlay',
+		'canvases': [
+			{ 'name':'playing', 'duration':9999, 'conditional':'True' }
+		],
+		'conditional': "db['state']=='play'"
 	}
 ]
