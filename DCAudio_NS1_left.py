@@ -31,13 +31,13 @@ IMAGES = {
 WIDGETS = {
 	'splashDCaudio': { 'type':'ttext', 'format':'DCaudio', 'font':'GraphikBold28' },
 	'splashStreamer': { 'type':'ttext', 'format':'Streamer', 'font':'GraphikThin28' },
-	'artist': { 'type':'ttext', 'format':'{0}', 'variables':['artist'], 'font':'GraphikRegular16','varwidth':True,'effect':('scroll','left',1,1,20,'onloop',3,125)}
+	'artist': { 'type':'ttext', 'format':'{0}', 'variables':['artist'], 'font':'GraphikRegular16','varwidth':True, 'just':'center', 'effect':('scroll','left',1,1,20,'none',3,125)}
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
 	'splashLogo': { 'widgets': [ ('splashDCaudio',1,1), ('splashStreamer',3,35) ], 'size':(128,64) },
-	'playing': { 'widgets': [ ('artist',3,10) ], 'size':(128,64) },
+	'playing': { 'widgets': [ ('artist',1,24) ], 'size':(128,64) },
 
 }
 
