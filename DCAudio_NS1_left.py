@@ -34,14 +34,14 @@ WIDGETS = {
 	'splashStreamer': { 'type':'ttext', 'format':'Streamer', 'font':'GraphikThin28' },
 	'artist': { 'type':'ttext', 'format':'{0}', 'variables':['artist'], 'font':'GraphikMedium18', 'just':'center', 'effect':('scroll','left',1,1,20,'onloop',3,128), 'size':(128,18)},
 	'bitdepth': { 'type':'text', 'format':'{0}', 'variables':['bitdepth'], 'font':'small', 'just':'left','varwidth':True},
-	'samplerate': { 'type':'text', 'format':'{0}', 'variables':['samplerate'], 'font':'small', 'just':'center','varwidth':True,'size':(40,8)},
-	'encoding': { 'type':'text', 'format':'{0}', 'variables':['encoding'], 'font':'small', 'just':'right','varwidth':True,'size':(40,8)},
+	'samplerate': { 'type':'text', 'format':'{0}', 'variables':['samplerate'], 'font':'small', 'just':'center','varwidth':True,'size':(48,8)},
+	'encoding': { 'type':'text', 'format':'{0}', 'variables':['encoding|capitalize'], 'font':'small', 'just':'right','varwidth':True,'size':(48,8)},
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
 	'splashLogo': { 'widgets': [ ('splashDCaudio',1,1), ('splashStreamer',3,35) ], 'size':(128,64) },
-	'playing': { 'widgets': [ ('artist',0,23) , ('bitdepth',0,56), ('samplerate',44,56) , ('encoding',88,56)], 'size':(128,64) },
+	'playing': { 'widgets': [ ('artist',0,23) , ('bitdepth',0,56), ('samplerate',44,56) , ('encoding',80,56)], 'size':(128,64) },
 	'blank': { 'widgets': [], 'size':(128,64) },
 }
 
