@@ -10,8 +10,6 @@ import musicdata
 
 class musicdata_mpd(musicdata.musicdata):
 
-
-
 	def __init__(self, q, server=u'localhost', port=6600, pwd=u''):
 		super(musicdata_mpd, self).__init__(q)
 		self.server = server
