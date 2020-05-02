@@ -259,8 +259,8 @@ class music_controller(threading.Thread):
 
                 # Update display controller
                 # The primary call to this routine is in main but this call is needed to catch variable changes before musicdata_prev is updated.
-                for displayIndex in len(self.display_controller):
-                    self.display_controller[displayIndex].next()
+                for item, value in self.display_controller.interitems():
+                    self.display_controller[item].next()
                 # self.display_controller.next()
 
                 # Print the current contents of musicdata if showupdates is True
