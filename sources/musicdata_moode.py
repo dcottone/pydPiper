@@ -70,7 +70,7 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 			mediainfo = p.communicate()
 			print mediainfo
 			print "@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-			print mediainfo[0]
+			print mediainfo[0].split()
 			encoding = "AAAAA"
 
 		self.musicdata[u'encoding'] = encoding
