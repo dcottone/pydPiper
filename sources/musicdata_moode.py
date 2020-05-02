@@ -8,7 +8,7 @@ from __future__ import unicode_literals
 import json, mpd, threading, logging, Queue, time, sys, getopt
 import musicdata
 
-class musicdata_mpd(musicdata.musicdata_mpd):
+class musicdata_moode(musicdata.musicdata_mpd):
     def __init__(self, q, server=u'localhost', port=6600, pwd=u''):
         super(q,server,port,pwd)
 
