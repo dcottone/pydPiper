@@ -113,8 +113,10 @@ class music_controller(threading.Thread):
         for s in self.servicelist:
             s = s.lower()
             try:
-                if s == u"mpd" or s == u"moode":
+                if s == u"mpd" :
                     musicservice = sources.musicdata_mpd.musicdata_mpd(self.musicqueue, pydPiper_config_dual.MPD_SERVER, pydPiper_config_dual.MPD_PORT, pydPiper_config_dual.MPD_PASSWORD)
+                elif s == u"moode":
+                    musicservice = sources.musicdata_mpd.musicdata_moode(self.musicqueue, pydPiper_config_dual.MPD_SERVER, pydPiper_config_dual.MPD_PORT, pydPiper_config_dual.MPD_PASSWORD)
                 elif s == u"spop":
                     musicservice = sources.musicdata_spop.musicdata_spop(self.musicqueue, pydPiper_config_dual.SPOP_SERVER, pydPiper_config_dual.SPOP_PORT, pydPiper_config_dual.SPOP_PASSWORD)
                 elif s == u"lms":
