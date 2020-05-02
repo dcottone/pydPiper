@@ -66,7 +66,7 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 		else:
 			filepath = localMusicBase+self.musicdata[u'uri'].split(u':')[0]
 			p = None
-			p = subprocess.Popen(['mediainfo', filepath], stdout=subprocess.PIPE, stderr=None, shell=True)
+			p = subprocess.Popen(['mediainfo', filepath], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 			mediainfo = p.communicate()
 			print mediainfo
 			encoding = "AAAAA"
