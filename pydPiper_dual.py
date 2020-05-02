@@ -259,7 +259,9 @@ class music_controller(threading.Thread):
 
                 # Update display controller
                 # The primary call to this routine is in main but this call is needed to catch variable changes before musicdata_prev is updated.
-                self.display_controller.next()
+                for displayIndex in len(self.display_controller):
+                    self.display_controller[displayIndex].next()
+                # self.display_controller.next()
 
                 # Print the current contents of musicdata if showupdates is True
                 if self.showupdates:
@@ -859,20 +861,20 @@ if __name__ == u'__main__':
     dc_2 = displays.display.display_controller(pydPiper_config_dual.DISPLAY_2_SIZE)
 
     logging.debug('Loading music controller')
-    mc_1 = music_controller(services_list, dc_1, showupdates)
-    mc_2 = music_controller(services_list, dc_2, showupdates)
+    mc_1 = music_controller(services_list, [dc_1,dc_2], showupdates)
+    #mc_2 = music_controller(services_list, dc_2, showupdates)
     time.sleep(2)
     mc_1.start()
-    mc_2.start()
+    #mc_2.start()
     dc_1.load(pagefile_1, mc_1.musicdata,mc_1.musicdata_prev )
-    dc_2.load(pagefile_2, mc_2.musicdata,mc_2.musicdata_prev )
+    dc_2.load(pagefile_2, mc_1.musicdata,mc_1.musicdata_prev )
 
     try:
         while True:
             # Get next image and send it to the display every .1 seconds
             with mc_1.musicdata_lock:
                 img_1 = dc_1.next()
-            with mc_2.musicdata_lock:
+          #  with mc_2.musicdata_lock:
                 img_2 = dc_2.next()
 #            displays.graphics.update(img)
             lcd_1.update(img_1)
@@ -895,5 +897,5 @@ if __name__ == u'__main__':
         except:
             pass
         mc_1.join()
-        mc_2.join()
+#        mc_2.join()
         logging.info(u"Exiting...")
