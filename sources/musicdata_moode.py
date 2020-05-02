@@ -68,7 +68,8 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 			p = None
 			p = subprocess.Popen(['mediainfo', filepath], stdout=subprocess.PIPE, stderr=None)
 			mediainfo = p.communicate()
-			mediaParameter = dict(map(lambda s : s.split(':'),mediainfo))
+			dada = mediainfo[0].decode('utf-8')
+			mediaParameter = dict(map(lambda s : s.split(':'),dada))
 			print '@@@@@@@@@@@@@@@@@@@'
 			print mediaParameter
 			print '@@@@@@@@@@@@@@@@@@@'
