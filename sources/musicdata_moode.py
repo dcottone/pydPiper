@@ -24,7 +24,6 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 			raise RuntimeError(u"Could not get status from MPD")
 
 
-
 		state = status.get(u'state')
 		if state != u"play":
 			self.musicdata[u'state'] = u"stop"
@@ -58,15 +57,10 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 		self.musicdata[u'musicdatasource'] = u"MPD"
 
 		if self.musicdata[u'uri'].split(u':')[0] == u'http':
-			print '#########################################'
-			print self.musicdata[u'uri']
-			print len(self.musicdata[u'uri'].split(u'/'))
-			print self.musicdata[u'uri'].split(u'/')
-			print '#########################################'
 			if len(self.musicdata[u'uri'].split(u'/')) >= 4:
 				if self.musicdata[u'uri'].split(u'/')[3] == u'tidal':
 					encoding = u'tidal'
-					self.musicdata[u'musicdatasource'] = u"UPNP"
+					self.musicdata[u'musicdatasource'] = u"upnp"
 			else:
 				encoding = u'stream'
 		else:
@@ -117,8 +111,8 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 
 		 		tracktype = u"{0} {1} {2} bit {3} kHz".format(self.musicdata[u'encoding'], channels, bits, sample).strip()
 
-				bitdepth = u"{0} bits".format(bits)
-				samplerate = u"{0} kHz".format(sample)
+				bitdepth = u"{0}bit".format(bits)
+				samplerate = u"{0}kHz".format(sample)
 
 		self.musicdata[u'tracktype'] = tracktype
 		self.musicdata[u'bitdepth'] = bitdepth
