@@ -9,6 +9,7 @@ import json, mpd, threading, logging, Queue, time, sys, getopt
 import musicdata_mpd
 
 class musicdata_moode(musicdata_mpd.musicdata_mpd):
+
 	def status(self):
 		# Read musicplayer status and update musicdata
 
@@ -57,10 +58,11 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 		self.musicdata[u'musicdatasource'] = u"MPD"
 
 		if self.musicdata[u'uri'].split(u':')[0] == u'http':
-			print '###########################################'
-			print self.musicdata[u'uri'].split(u'/')
-			print '###########################################'
-			encoding = u'webradio'
+			if self.musicdata[u'uri'].split(u'/')[3] == u'tidal':
+				encoding = u'Tidal'
+				self.musicdata[u'musicdatasource'] = u"UPNP"
+			else:
+				encoding = u'webradio'
 		else:
 			encoding = self.musicdata[u'uri'].split(u':')[0]
 
