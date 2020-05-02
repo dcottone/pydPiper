@@ -68,7 +68,9 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 			p = None
 			p = subprocess.Popen(['mediainfo', filepath], stdout=subprocess.PIPE, stderr=None)
 			mediainfo = p.communicate()
-			print len(mediainfo)
+			print mediainfo
+			print "@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+			print mediainfo[0]
 			encoding = "AAAAA"
 
 		self.musicdata[u'encoding'] = encoding
