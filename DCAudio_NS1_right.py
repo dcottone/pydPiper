@@ -16,10 +16,10 @@ FONTS = {
 }
 
 TRUETYPE_FONTS = {
-	'GraphikBold48': { 'file':'/app/fonts/GraphikBold.otf', 'size':48 },
-	'GraphikThin48': { 'file':'/app/fonts/GraphikThin.otf', 'size':48 },
-	'GraphikMedium18': { 'file':'/app/fonts/GraphikMedium.otf', 'size':18 },
-	'GraphikRegular12': { 'file':'/app/fonts/GraphikRegular.otf', 'size':12 },
+	'GraphikBold48': { 'file':'/home/pi/pydPiper/fonts/GraphikBold.otf', 'size':48 },
+	'GraphikThin48': { 'file':'/home/pi/pydPiper/fonts/GraphikThin.otf', 'size':48 },
+	'GraphikMedium18': { 'file':'/home/pi/pydPiper/fonts/GraphikMedium.otf', 'size':18 },
+	'GraphikRegular12': { 'file':'/home/pi/pydPiper/fonts/GraphikRegular.otf', 'size':12 },
 }
 
 IMAGES = {
