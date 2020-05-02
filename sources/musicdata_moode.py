@@ -5,14 +5,14 @@
 # Written by: Ron Ritchey
 from __future__ import unicode_literals
 
-import json, mpd, threading, logging, Queue, time, sys, getopt
+import json, mpd, threading, logging, Queue, time, sys, getopt, subprocess
 import musicdata_mpd
 
 class musicdata_moode(musicdata_mpd.musicdata_mpd):
 
 	def status(self):
 		# Read musicplayer status and update musicdata
-		localMusicBase = "/var/lib/mpd/music"
+		localMusicBase = "/var/lib/mpd/music/"
 
 		try:
 			status = self.dataclient.status()
@@ -65,7 +65,11 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 					self.musicdata[u'musicdatasource'] = u"upnp"
 		else:
 			filepath = localMusicBase+self.musicdata[u'uri'].split(u':')[0]
-			encoding = filepath
+			p = None
+			p = subprocess.Popen(['mediainfo', filepath], stdout=subprocess.PIPE, stderr=None, shell=True)
+			mediainfo = p.communicate()
+			print mediainfo
+			encoding = "AAAAA"
 
 		self.musicdata[u'encoding'] = encoding
 
