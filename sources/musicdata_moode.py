@@ -57,12 +57,12 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 		self.musicdata[u'musicdatasource'] = u"MPD"
 
 		if self.musicdata[u'uri'].split(u':')[0] == u'http':
+			encoding = u'stream'
 			if len(self.musicdata[u'uri'].split(u'/')) >= 4:
 				if self.musicdata[u'uri'].split(u'/')[3] == u'tidal':
 					encoding = u'tidal'
 					self.musicdata[u'musicdatasource'] = u"upnp"
-			else:
-				encoding = u'stream'
+				
 		else:
 			encoding = self.musicdata[u'uri'].split(u':')[0]
 
