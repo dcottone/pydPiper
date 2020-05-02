@@ -57,6 +57,9 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 		self.musicdata[u'musicdatasource'] = u"MPD"
 
 		if self.musicdata[u'uri'].split(u':')[0] == u'http':
+			print '###########################################'
+			print self.musicdata[u'uri'].split(u'/')
+			print '###########################################'
 			encoding = u'webradio'
 		else:
 			encoding = self.musicdata[u'uri'].split(u':')[0]
