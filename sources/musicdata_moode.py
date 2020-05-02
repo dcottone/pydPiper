@@ -12,6 +12,7 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 
 	def status(self):
 		# Read musicplayer status and update musicdata
+		localMusicBase = "/var/lib/mpd/music"
 
 		try:
 			status = self.dataclient.status()
@@ -62,9 +63,9 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 				if self.musicdata[u'uri'].split(u'/')[3] == u'tidal':
 					encoding = u'tidal'
 					self.musicdata[u'musicdatasource'] = u"upnp"
-				
 		else:
-			encoding = self.musicdata[u'uri'].split(u':')[0]
+			filepath = localMusicBase+self.musicdata[u'uri'].split(u':')[0]
+			encoding = filepath
 
 		self.musicdata[u'encoding'] = encoding
 
