@@ -65,10 +65,10 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 			print '#########################################'
 			if len(self.musicdata[u'uri'].split(u'/')) >= 4:
 				if self.musicdata[u'uri'].split(u'/')[3] == u'tidal':
-					encoding = u'Tidal'
+					encoding = u'tidal'
 					self.musicdata[u'musicdatasource'] = u"UPNP"
 			else:
-				encoding = u'webradio'
+				encoding = u'stream'
 		else:
 			encoding = self.musicdata[u'uri'].split(u':')[0]
 
@@ -83,7 +83,7 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 		self.musicdata[u'playlist_count'] = self.musicdata[u'playlist_length']
 
 		# If playlist is length 1 and the song playing is from an http source it is streaming
-		if self.musicdata[u'encoding'] == u'webradio':
+		if self.musicdata[u'encoding'] == u'stream':
 			self.musicdata[u'playlist_display'] = u"Radio"
 			if not self.musicdata[u'artist']:
 				self.musicdata[u'artist'] = current_song[u'name'] if u'name' in current_song else u""
