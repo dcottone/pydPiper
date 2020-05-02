@@ -58,7 +58,12 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 		self.musicdata[u'musicdatasource'] = u"MPD"
 
 		if self.musicdata[u'uri'].split(u':')[0] == u'http':
-			if self.musicdata[u'uri'].split(u'/').count > 3:
+			print '#########################################'
+			print self.musicdata[u'uri']
+			print len(self.musicdata[u'uri'].split(u'/'))
+			print self.musicdata[u'uri'].split(u'/')
+			print '#########################################'
+			if len(self.musicdata[u'uri'].split(u'/')) >= 4:
 				if self.musicdata[u'uri'].split(u'/')[3] == u'tidal':
 					encoding = u'Tidal'
 					self.musicdata[u'musicdatasource'] = u"UPNP"
