@@ -72,7 +72,7 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 			p = subprocess.Popen(['mediainfo', '--Inform=Audio;%Format%', filepath], stdout=subprocess.PIPE, stderr=None)
 			mediainfoFormat = p.communicate()[0].strip().decode('utf-8')
 			encoding = mediainfoFormat
-			bits = 1
+			bitdepth = 1
 
 		self.musicdata[u'encoding'] = encoding
 
