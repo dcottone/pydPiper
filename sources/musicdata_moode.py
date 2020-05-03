@@ -69,7 +69,7 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 		else:
 			filepath = localMusicBase+self.musicdata[u'uri'].split(u':')[0]
 			p = None
-			p = subprocess.Popen(['mediainfo', '--Inform=Audio;%Format%', filepath], stdout=subprocess.PIPE, stderr=None)
+			p = subprocess.Popen(['mediainfo', '--Inform=Audio;%Format_Commercial%', filepath], stdout=subprocess.PIPE, stderr=None)
 			mediainfoFormat = p.communicate()[0].strip().decode('utf-8')
 			encoding = mediainfoFormat
 			bitdepth = u'1bit'
