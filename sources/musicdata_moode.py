@@ -118,8 +118,7 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 
 				bitdepth = u"{0}bit".format(bits)
 				samplerate = u"{0}kHz".format(sample)
-		else:
-
+		
 		self.musicdata[u'tracktype'] = tracktype
 		self.musicdata[u'bitdepth'] = bitdepth
 		self.musicdata[u'samplerate'] = samplerate
