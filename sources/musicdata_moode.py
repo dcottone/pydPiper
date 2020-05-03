@@ -13,6 +13,9 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 	def status(self):
 		# Read musicplayer status and update musicdata
 		localMusicBase = "/var/lib/mpd/music/"
+		bitdepth = u""
+		samplerate = u""
+		chnum = 0
 
 		try:
 			status = self.dataclient.status()
@@ -69,6 +72,7 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 			p = subprocess.Popen(['mediainfo', '--Inform=Audio;%Format%', filepath], stdout=subprocess.PIPE, stderr=None)
 			mediainfoFormat = p.communicate()[0].strip().decode('utf-8')
 			encoding = mediainfoFormat
+			bits = 1
 
 		self.musicdata[u'encoding'] = encoding
 
@@ -89,10 +93,7 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 				self.musicdata[u'playlist_display'] = u"{0}/{1}".format(self.musicdata[u'playlist_position'], self.musicdata[u'playlist_count'])
 
 		audio = status[u'audio'] if u'audio' in status else None
-		bitdepth = u""
-		samplerate = u""
-		chnum = 0
-
+		
 		if self.musicdata[u'encoding']:
 			tracktype = self.musicdata[u'encoding']
 		else:
@@ -117,6 +118,7 @@ class musicdata_moode(musicdata_mpd.musicdata_mpd):
 
 				bitdepth = u"{0}bit".format(bits)
 				samplerate = u"{0}kHz".format(sample)
+		else:
 
 		self.musicdata[u'tracktype'] = tracktype
 		self.musicdata[u'bitdepth'] = bitdepth
