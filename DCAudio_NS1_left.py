@@ -35,7 +35,7 @@ WIDGETS = {
 	'artist': { 'type':'ttext', 'format':'{0}', 'variables':['artist'], 'font':'GraphikRegular20', 'just':'center', 'effect':('scroll','left',1,1,20,'onloop',3,128), 'size':(128,18)},
 	'bitdepth': { 'type':'ttext', 'format':'{0}', 'variables':['bitdepth'], 'font':'GraphikRegular12', 'just':'left','varwidth':True},
 	'samplerate': { 'type':'ttext', 'format':'{0}', 'variables':['samplerate'], 'font':'GraphikRegular12', 'just':'center','varwidth':True,'size':(40,8)},
-	'encoding': { 'type':'ttext', 'format':'{0}', 'variables':['encoding|capitalize'], 'font':'GraphikRegular12', 'just':'right','varwidth':True,'size':(48,8)},
+	'encoding': { 'type':'ttext', 'format':'{0}', 'variables':['encoding|upper'], 'font':'GraphikRegular12', 'just':'right','varwidth':True,'size':(48,8)},
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
