@@ -16,7 +16,7 @@ class musicdata_moode(musicdata.musicdata):
 		self.port = port
 		self.pwd = pwd
 		self.connection_failed = 0
-		self.timeout = 5
+		self.timeout = 20
 		self.idle_state = False
 
 		self.dataclient = None
@@ -115,9 +115,13 @@ class musicdata_moode(musicdata.musicdata):
 		chnum = 0
 
 		try:
+			print '1'
 			status = self.dataclient.status()
+			print '2'
 			current_song = self.dataclient.currentsong()
+			print '3'
 			playlist_info = self.dataclient.playlistinfo()
+			print '4'
 		except:
 			# Caught something else.  Report it and then inform calling function that the connection is bad
 			e = sys.exc_info()[0]
@@ -245,7 +249,7 @@ if __name__ == u'__main__':
 
 	# Suppress MPD libraries INFO messages
 	loggingMPD = logging.getLogger(u"moode")
-	loggingMPD.setLevel( logging.DEBUG )
+	loggingMPD.setLevel( logging.WARN )
 
 	try:
 		opts, args = getopt.getopt(sys.argv[1:],u"hs:p:w:",[u"server=",u"port=",u"pwd="])
@@ -276,7 +280,7 @@ if __name__ == u'__main__':
 		start = time.time()
 		while True:
 			if start+1200 < time.time():
-				break;
+				break
 			try:
 				item = q.get(timeout=1000)
 				print u"+++++++++"
