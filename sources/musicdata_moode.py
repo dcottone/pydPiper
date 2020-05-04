@@ -157,6 +157,8 @@ class musicdata_moode(musicdata.musicdata):
 		self.musicdata[u'actPlayer'] = u"MPD"
 		self.musicdata[u'musicdatasource'] = u"MPD"
 
+		print 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+
 		if self.musicdata[u'uri'].split(u':')[0] == u'http':
 			encoding = u'stream'
 			if len(self.musicdata[u'uri'].split(u'/')) >= 4:
@@ -170,6 +172,8 @@ class musicdata_moode(musicdata.musicdata):
 			mediainfoFormat = p.communicate()[0].strip().decode('utf-8')
 			encoding = mediainfoFormat
 			bitdepth = u'1bit'
+
+		print 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
 
 		self.musicdata[u'encoding'] = encoding
 
