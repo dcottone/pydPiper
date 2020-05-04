@@ -10,6 +10,15 @@ import musicdata_mpd
 
 class musicdata_moode(musicdata_mpd.musicdata_mpd):
 
+	def idlealert(self):
+		super(self)
+	
+	def connect(self):
+		super(self)
+
+	def run(self):
+		super(self)
+
 	def status(self):
 		# Read musicplayer status and update musicdata
 		localMusicBase = "/var/lib/mpd/music/"
