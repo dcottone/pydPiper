@@ -6,7 +6,7 @@
 from __future__ import unicode_literals
 
 import json, mpd, threading, logging, Queue, time, sys, getopt, subprocess
-import sources.musicdata_mpd
+import musicdata_mpd
 
 class musicdata_moode(musicdata_mpd.musicdata_mpd):
 
