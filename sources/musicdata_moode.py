@@ -16,7 +16,7 @@ class musicdata_moode(musicdata.musicdata):
 		self.port = port
 		self.pwd = pwd
 		self.connection_failed = 0
-		self.timeout = 20
+		self.timeout = 5
 		self.idle_state = False
 
 		self.dataclient = None
@@ -44,6 +44,7 @@ class musicdata_moode(musicdata.musicdata):
 					self.dataclient._write_command("noidle")
 				except (mpd.CommandError, NameError, mpd.ConnectionError, AttributeError):
 					# If not idle (or not created yet) return to sleeping
+					print 'ERRORE IN IDLE'
 					pass
 
 	def connect(self):
