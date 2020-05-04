@@ -148,7 +148,7 @@ if __name__ == u'__main__':
 
 	# Suppress MPD libraries INFO messages
 	loggingMPD = logging.getLogger(u"moode")
-	loggingMPD.setLevel( logging.WARN )
+	loggingMPD.setLevel( logging.DEBUG )
 
 	try:
 		opts, args = getopt.getopt(sys.argv[1:],u"hs:p:w:",[u"server=",u"port=",u"pwd="])
@@ -178,7 +178,7 @@ if __name__ == u'__main__':
 	try:
 		start = time.time()
 		while True:
-			if start+120 < time.time():
+			if start+1200 < time.time():
 				break;
 			try:
 				item = q.get(timeout=1000)
