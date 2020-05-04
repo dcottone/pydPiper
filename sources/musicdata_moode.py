@@ -157,7 +157,6 @@ class musicdata_moode(musicdata.musicdata):
 		self.musicdata[u'actPlayer'] = u"MPD"
 		self.musicdata[u'musicdatasource'] = u"MPD"
 
-		print 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
 
 		if self.musicdata[u'uri'].split(u':')[0] == u'http':
 			encoding = u'stream'
@@ -167,13 +166,12 @@ class musicdata_moode(musicdata.musicdata):
 					self.musicdata[u'musicdatasource'] = u"upnp"
 		else:
 			filepath = localMusicBase+self.musicdata[u'uri'].split(u':')[0]
+			print 'FILEPATH='+filepath
 			p = None
 			p = subprocess.Popen(['mediainfo', '--Inform=Audio;%Format_Commercial%', filepath], stdout=subprocess.PIPE, stderr=None)
 			mediainfoFormat = p.communicate()[0].strip().decode('utf-8')
 			encoding = mediainfoFormat
 			bitdepth = u'1bit'
-
-		print 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
 
 		self.musicdata[u'encoding'] = encoding
 
