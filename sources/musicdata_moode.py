@@ -44,7 +44,6 @@ class musicdata_moode(musicdata.musicdata):
 					self.dataclient._write_command("noidle")
 				except (mpd.CommandError, NameError, mpd.ConnectionError, AttributeError):
 					# If not idle (or not created yet) return to sleeping
-					print 'ERRORE IN IDLE'
 					pass
 
 	def connect(self):
@@ -116,13 +115,9 @@ class musicdata_moode(musicdata.musicdata):
 		chnum = 0
 
 		try:
-			print '1'
 			status = self.dataclient.status()
-			print '2'
 			current_song = self.dataclient.currentsong()
-			print '3'
 			playlist_info = self.dataclient.playlistinfo()
-			print '4'
 		except:
 			# Caught something else.  Report it and then inform calling function that the connection is bad
 			e = sys.exc_info()[0]
@@ -239,8 +234,9 @@ class musicdata_moode(musicdata.musicdata):
 
 		# For backwards compatibility
 		self.musicdata[u'position'] = self.musicdata[u'elapsed_formatted']
-
+		print 'BEFORE validatemusicvars'
 		self.validatemusicvars(self.musicdata)
+		print 'AFTER validatemusicvars'
 
 
 if __name__ == u'__main__':
