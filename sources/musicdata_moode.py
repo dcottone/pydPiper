@@ -167,6 +167,7 @@ class musicdata_moode(musicdata.musicdata):
 		else:
 			filepath = localMusicBase+self.musicdata[u'uri'].split(u':')[0]
 			print 'FILEPATH='+filepath
+			print 'URI='+ self.musicdata[u'uri']
 			p = None
 			p = subprocess.Popen(['mediainfo', '--Inform=Audio;%Format_Commercial%', filepath], stdout=subprocess.PIPE, stderr=None)
 			mediainfoFormat = p.communicate()[0].strip().decode('utf-8')
