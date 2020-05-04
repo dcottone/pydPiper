@@ -18,8 +18,8 @@ FONTS = {
 TRUETYPE_FONTS = {
 	'GraphikBold28': { 'file':'/home/pi/pydPiper/fonts/GraphikBold.otf', 'size':28 },
 	'GraphikThin28': { 'file':'/home/pi/pydPiper/fonts/GraphikThin.otf', 'size':28 },
-    'GraphikRegular20': { 'file':'/home/pi/pydPiper/fonts/GraphikRegular.otf', 'size':20 },
-	'GraphikRegular12': { 'file':'/home/pi/pydPiper/fonts/GraphikRegular.otf', 'size':12 },
+    'GraphikRegular20': { 'file':'/home/pi/pydPiper/fonts/GraphikSemibold.otf', 'size':20 },
+	'GraphikRegular12': { 'file':'/home/pi/pydPiper/fonts/GraphikSemibold.otf', 'size':12 },
 	'GraphikThin12': { 'file':'/home/pi/pydPiper/fonts/GraphikThin.otf', 'size':12 },
 }
 
@@ -34,7 +34,7 @@ WIDGETS = {
 	'splashStreamer': { 'type':'ttext', 'format':'Streamer', 'font':'GraphikThin28' },
 	'artist': { 'type':'ttext', 'format':'{0}', 'variables':['artist'], 'font':'GraphikRegular20', 'just':'center', 'effect':('scroll','left',1,1,20,'onloop',3,128), 'size':(128,18)},
 	'bitdepth': { 'type':'ttext', 'format':'{0}', 'variables':['bitdepth'], 'font':'GraphikRegular12', 'just':'left','varwidth':True},
-	'samplerate': { 'type':'ttext', 'format':'{0}', 'variables':['samplerate'], 'font':'GraphikRegular12', 'just':'right','varwidth':True},
+	'samplerate': { 'type':'ttext', 'format':'{0}', 'variables':['samplerate'], 'font':'GraphikRegular12', 'just':'center','varwidth':True},
 	'encoding': { 'type':'ttext', 'format':'{0}', 'variables':['encoding|upper'], 'font':'GraphikRegular12', 'just':'right','varwidth':True, 'size':(80,12)},
 }
 
