@@ -41,7 +41,7 @@ WIDGETS = {
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
 	'splashLogo': { 'widgets': [ ('splashDCaudio',1,1), ('splashStreamer',3,35) ], 'size':(128,64) },
-	'playing': { 'widgets': [ ('artist',0,20) , ('bitdepth',0,52), ('encoding',40,52), ('samplerate',30,52)], 'size':(128,64) },
+	'playing': { 'widgets': [ ('artist',0,20) , ('bitdepth',0,52), ('encoding',48,52), ('samplerate',40,52)], 'size':(128,64) },
 	'blank': { 'widgets': [], 'size':(128,64) },
 }
 
