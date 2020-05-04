@@ -6,106 +6,9 @@
 from __future__ import unicode_literals
 
 import json, mpd, threading, logging, Queue, time, sys, getopt, subprocess
-import musicdata
+import sources.musicdata_mpd
 
-class musicdata_moode(musicdata.musicdata):
-
-	def __init__(self, q, server=u'localhost', port=6600, pwd=u''):
-		super(musicdata_moode, self).__init__(q)
-		self.server = server
-		self.port = port
-		self.pwd = pwd
-		self.connection_failed = 0
-		self.timeout = 5
-		self.idle_state = False
-
-		self.dataclient = None
-
-		# Now set up a thread to listen to the channel and update our data when
-		# the channel indicates a relevant key has changed
-		data_t = threading.Thread(target=self.run)
-		data_t.daemon = True
-		data_t.start()
-
-		# Start the idle timer
-		idle_t = threading.Thread(target=self.idlealert)
-		idle_t.daemon = True
-		idle_t.start()
-
-	def idlealert(self):
-
-		while True:
-			# Generate a noidle event every timeout seconds
-			time.sleep(self.timeout)
-
-			if self.idle_state:
-				try:
-					#self.dataclient.noidle()
-					self.dataclient._write_command("noidle")
-				except (mpd.CommandError, NameError, mpd.ConnectionError, AttributeError):
-					# If not idle (or not created yet) return to sleeping
-					pass
-
-	def connect(self):
-
-		# Try up to 10 times to connect to MPD
-		self.connection_failed = 0
-		self.dataclient = None
-
-		logging.debug(u"Connecting to MPD service on {0}:{1}".format(self.server, self.port))
-
-		while True:
-			if self.connection_failed >= 10:
-				logging.debug(u"Could not connect to MPD")
-				break
-			try:
-				# Connection to MPD
-				client = mpd.MPDClient(use_unicode=True)
-				client.connect(self.server, self.port)
-
-				self.dataclient = client
-				break
-			except:
-				self.dataclient = None
-				self.connection_failed += 1
-				time.sleep(1)
-		if self.dataclient is None:
-			raise mpd.ConnectionError(u"Could not connect to MPD")
-		else:
-			logging.debug(u"Connected to MPD")
-
-
-	def run(self):
-
-		logging.debug(u"MPD musicdata service starting")
-
-		while True:
-			if self.dataclient is None:
-				try:
-					# Try to connect
-					self.connect()
-					self.status()
-					self.sendUpdate()
-				except mpd.ConnectionError:
-					self.dataclient = None
-					# On connection error, sleep 5 and then return to top and try again
-					time.sleep(5)
-					continue
-
-
-			try:
-				# Wait for notice that state has changed
-				self.idle_state = True
-				msg = self.dataclient.idle()
-				self.idle_state = False
-				self.status()
-				self.sendUpdate()
-				time.sleep(.01)
-			except mpd.ConnectionError:
-				self.dataclient = None
-				logging.debug(u"Could not get status from MPD")
-				time.sleep(5)
-				continue
+class musicdata_moode(musicdata_mpd.musicdata_mpd):
 
 	def status(self):
 		# Read musicplayer status and update musicdata
@@ -236,9 +139,8 @@ class musicdata_moode(musicdata.musicdata):
 
 		# For backwards compatibility
 		self.musicdata[u'position'] = self.musicdata[u'elapsed_formatted']
-		print 'BEFORE validatemusicvars'
+
 		self.validatemusicvars(self.musicdata)
-		print 'AFTER validatemusicvars'
 
 
 if __name__ == u'__main__':
