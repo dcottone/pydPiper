@@ -32,7 +32,7 @@ IMAGES = {
 WIDGETS = {
 	'splashDCaudio': { 'type':'ttext', 'format':'DCaudio', 'font':'GraphikBold28' },
 	'splashStreamer': { 'type':'ttext', 'format':'Streamer', 'font':'GraphikThin28' },
-	'artist': { 'type':'ttext', 'format':'{0}', 'variables':['artist'], 'font':'GraphikSemibold20', 'just':'center', 'effect':('scroll','left',1,1,20,'onloop',3,128), 'size':(128,18)},
+	'artist': { 'type':'ttext', 'format':'{0}', 'variables':['artist'], 'font':'GraphikSemibold20', 'just':'center', 'effect':('scroll','left',1,1,20,'onloop',3,128), 'size':(128,20)},
 	'bitdepth': { 'type':'ttext', 'format':'{0}', 'variables':['bitdepth'], 'font':'GraphikRegular12', 'just':'left','varwidth':True},
 	'samplerate': { 'type':'ttext', 'format':'{0}', 'variables':['samplerate'], 'font':'GraphikRegular12', 'just':'center','varwidth':True},
 	'encoding': { 'type':'ttext', 'format':'{0}', 'variables':['encoding|upper'], 'font':'GraphikRegular12', 'just':'right','varwidth':True, 'size':(80,12)},
