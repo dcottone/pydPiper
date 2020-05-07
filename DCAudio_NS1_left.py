@@ -36,14 +36,14 @@ WIDGETS = {
 	'bitdepth': { 'type':'ttext', 'format':'{0}', 'variables':['bitdepth'], 'font':'GraphikRegular12', 'just':'left','varwidth':True},
 	'samplerate': { 'type':'ttext', 'format':'{0}', 'variables':['samplerate'], 'font':'GraphikRegular12', 'just':'right','varwidth':True, 'size':(40,12)},
 	'encoding': { 'type':'ttext', 'format':'{0}', 'variables':['encoding|upper'], 'font':'GraphikRegular12', 'just':'right','varwidth':True, 'size':(40,12)},
-	'stopStatus': { 'type':'ttext', 'format':'STOP', 'font':'GraphikBold28', 'varwidth':True, 'just':'center', 'size':(128,28) },
+	'stopStatus': { 'type':'ttext', 'format':'STOP', 'font':'GraphikThin28', 'varwidth':True, 'just':'center', 'size':(128,28) },
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
 	'splashLogo': { 'widgets': [ ('splashDCaudio',0,0), ('splashStreamer',0,35) ], 'size':(128,64) },
 	'playing': { 'widgets': [ ('artist',0,20) , ('bitdepth',0,52), ('encoding',88,0), ('samplerate',88,52)], 'size':(128,64) },
-	'showstop': { 'widgets': [ ('stopStatus',0,30) ], 'size':(128,64) },
+	'showstop': { 'widgets': [ ('stopStatus',0,18) ], 'size':(128,64) },
 	'blank': { 'widgets': [], 'size':(128,64) },
 }
 
@@ -71,7 +71,7 @@ SEQUENCES = [
 	{
 		'name': 'seqAnnounceStop',
 		'canvases': [ 
-			{ 'name':'showstop','duration':9999} 
+			{ 'name':'showstop'} 
 		],
 		'conditional': "db['state']=='stop' or db['state']=='pause'"
 	},
