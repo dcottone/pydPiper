@@ -69,7 +69,7 @@ SEQUENCES = [
 	{
 		'name': 'seqAnnounceStop',
 		'canvases': [ 
-			{ 'name':'blank'} 
+			{ 'name':'blank', 'duration':9999999} 
 		],
 		'conditional': "db['state']=='stop' or db['state']=='pause'"
 	},
