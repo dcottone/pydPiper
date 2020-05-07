@@ -70,7 +70,9 @@ SEQUENCES = [
 	},
 	{
 		'name': 'seqAnnounceStop',
-		'canvases': [ { 'name':'showstop','conditional':'True' } ],
+		'canvases': [ 
+			{ 'name':'showstop','duration':9999, 'conditional':'True' } 
+		],
 		'conditional': "db['state'] != dbp['state'] and db['state']=='stop'"
 	},
 ]
