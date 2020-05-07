@@ -42,6 +42,7 @@ WIDGETS = {
 CANVASES = {
 	'splashLogo': { 'widgets': [ ('splash_NS',20,8), ('splash_1',80,8) ], 'size':(128,64) },
 	'playing': { 'widgets': [ ('title',0,20), ('elapsed',0,47), ('length',88,47), ('songprogress',0,60) ], 'size':(128,64) },
+	'blank': { 'widgets': [], 'size':(128,64) },
 }
 
 # Place the canvases into sequences to display when their condition is met
@@ -64,5 +65,12 @@ SEQUENCES = [
 			{ 'name':'playing', 'duration':9999, 'conditional':'True' }
 		],
 		'conditional': "db['state']=='play'"
-	}
+	},
+	{
+		'name': 'seqAnnounceStop',
+		'canvases': [ 
+			{ 'name':'blank'} 
+		],
+		'conditional': "db['state']=='stop' or db['state']=='pause'"
+	},
 ]
