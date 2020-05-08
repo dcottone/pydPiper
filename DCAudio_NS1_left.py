@@ -19,8 +19,6 @@ TRUETYPE_FONTS = {
 	'GraphikBold28': { 'file':'/home/pi/pydPiper/fonts/GraphikBold.otf', 'size':28 },
 	'GraphikThin28': { 'file':'/home/pi/pydPiper/fonts/GraphikThin.otf', 'size':28 },
     'GraphikSemibold20': { 'file':'/home/pi/pydPiper/fonts/GraphikSemibold.otf', 'size':20 },
-	'GraphikRegular12': { 'file':'/home/pi/pydPiper/fonts/GraphikRegular.otf', 'size':12 },
-	'GraphikThin12': { 'file':'/home/pi/pydPiper/fonts/GraphikThin.otf', 'size':12 },
 }
 
 IMAGES = {
@@ -33,16 +31,16 @@ WIDGETS = {
 	'splashDCaudio': { 'type':'ttext', 'format':'DCaudio', 'font':'GraphikBold28','just':'center','varwidth':True, 'size':(128,28) },
 	'splashStreamer': { 'type':'ttext', 'format':'Streamer', 'font':'GraphikThin28','just':'center','varwidth':True, 'size':(128,28) },
 	'artist': { 'type':'ttext', 'format':'{0}', 'variables':['artist'], 'font':'GraphikSemibold20', 'just':'center', 'effect':('scroll','left',1,1,20,'onloop',3,128), 'size':(128,20)},
-	'bitdepth': { 'type':'ttext', 'format':'{0}', 'variables':['bitdepth'], 'font':'GraphikRegular12', 'just':'left','varwidth':True},
-	'samplerate': { 'type':'ttext', 'format':'{0}', 'variables':['samplerate'], 'font':'GraphikRegular12', 'just':'right','varwidth':True, 'size':(40,12)},
-	'encoding': { 'type':'ttext', 'format':'{0}', 'variables':['encoding|upper'], 'font':'GraphikRegular12', 'just':'right','varwidth':True, 'size':(40,12)},
+	'bitdepth': { 'type':'text', 'format':'{0}', 'variables':['bitdepth'], 'font':'small', 'just':'left','varwidth':True},
+	'samplerate': { 'type':'text', 'format':'{0}', 'variables':['samplerate'], 'font':'small', 'just':'right','varwidth':True, 'size':(40,8)},
+	'encoding': { 'type':'text', 'format':'{0}', 'variables':['encoding|upper'], 'font':'small', 'just':'right','varwidth':True, 'size':(40,8)},
 	'stopStatus': { 'type':'ttext', 'format':'STOP', 'font':'GraphikThin28', 'varwidth':True, 'just':'center', 'size':(128,28) },
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
 CANVASES = {
 	'splashLogo': { 'widgets': [ ('splashDCaudio',0,0), ('splashStreamer',0,35) ], 'size':(128,64) },
-	'playing': { 'widgets': [ ('artist',0,20) , ('bitdepth',0,52), ('encoding',88,0), ('samplerate',88,52)], 'size':(128,64) },
+	'playing': { 'widgets': [ ('artist',0,20) , ('bitdepth',0,56), ('encoding',88,0), ('samplerate',88,56)], 'size':(128,64) },
 	'showstop': { 'widgets': [ ('stopStatus',0,18) ], 'size':(128,64) },
 	'blank': { 'widgets': [], 'size':(128,64) },
 }
