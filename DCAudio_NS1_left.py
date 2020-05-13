@@ -34,7 +34,7 @@ WIDGETS = {
 	'bitdepth': { 'type':'text', 'format':'{0}', 'variables':['bitdepth'], 'font':'small', 'just':'left','varwidth':True},
 	'samplerate': { 'type':'text', 'format':'{0}', 'variables':['samplerate'], 'font':'small', 'just':'right','varwidth':True, 'size':(40,8)},
 	'encoding': { 'type':'text', 'format':'{0}', 'variables':['encoding|upper'], 'font':'small', 'just':'right','varwidth':True, 'size':(40,8)},
-	'stopStatus': { 'type':'ttext', 'format':'STOP', 'font':'GraphikThin28', 'varwidth':True, 'just':'center', 'size':(128,28) },
+	'stopStatus': { 'type':'ttext', 'format':'STOP', 'font':'GraphikBold28', 'varwidth':True, 'just':'center', 'size':(128,28) },
 	'ttime': { 'type':'ttext', 'format':'{0}', 'variables':['utc|timezone+Europe/Rome|strftime+%-I:%M'], 'font':'GraphikThin28', 'just':'center', 'varwidth':False },
 }
 
