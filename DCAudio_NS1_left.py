@@ -34,9 +34,10 @@ WIDGETS = {
 	'bitdepth': { 'type':'text', 'format':'{0}', 'variables':['bitdepth'], 'font':'small', 'just':'left','varwidth':True},
 	'samplerate': { 'type':'text', 'format':'{0}', 'variables':['samplerate'], 'font':'small', 'just':'right','varwidth':True, 'size':(40,8)},
 	'encoding': { 'type':'text', 'format':'{0}', 'variables':['encoding|upper'], 'font':'small', 'just':'right','varwidth':True, 'size':(40,8)},
-	'stopStatus': { 'type':'ttext', 'format':'STOP', 'font':'GraphikSemibold20', 'varwidth':True, 'just':'center', 'size':(128,20) },
 	'ttime': { 'type':'ttext', 'format':'{0}', 'variables':['time'], 'font':'GraphikThin28', 'just':'center', 'varwidth':True, 'size':(128,28) },
 	'ip': { 'type':'text', 'format':'{0}', 'variables':['ip'], 'font':'large', 'just':'center', 'varwidth':True, 'size':(128,16) },
+	'volumelarge': { 'type':'text', 'format':'Volume: {0}', 'variables':['volume'], 'font':'large', 'just':'left', 'varwidth':True },
+	'volumebar': { 'type':'progressbar', 'value':'volume', 'rangeval':(0,100), 'size':(115,8) },
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
@@ -44,6 +45,7 @@ CANVASES = {
 	'splashLogo': { 'widgets': [ ('splashDCaudio',0,0), ('splashStreamer',0,35) ], 'size':(128,64) },
 	'playing': { 'widgets': [ ('artist',0,20) , ('bitdepth',0,56), ('encoding',88,0), ('samplerate',88,56)], 'size':(128,64) },
 	'showstop': { 'widgets': [('ttime',0,18), ('ip',0,48)], 'size':(128,64) },
+	'volume_changed': { 'widgets': [ ('volumelarge',8,0), ('volumebar',8,18) ], 'size':(128,64) },
 	'blank': { 'widgets': [], 'size':(128,64) },
 }
 
@@ -75,4 +77,11 @@ SEQUENCES = [
 		],
 		'conditional': "db['state']=='stop' or db['state']=='pause'"
 	},
+	{
+		'name':'seqVolume',
+		'coordinates':(0,0),
+		'canvases': [ { 'name':'volume_changed', 'duration':2 } ],
+		'conditional': "db['volume'] != dbp['volume']",
+		'minimum':2,
+	}
 ]
