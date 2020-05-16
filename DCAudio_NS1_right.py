@@ -16,9 +16,9 @@ FONTS = {
 }
 
 TRUETYPE_FONTS = {
-	'GraphikBold48': { 'file':'/home/pi/pydPiper/fonts/GraphikBold.otf', 'size':48 },
-	'GraphikThin48': { 'file':'/home/pi/pydPiper/fonts/GraphikThin.otf', 'size':48 },
-	'GraphikSemibold20': { 'file':'/home/pi/pydPiper/fonts/GraphikSemibold.otf', 'size':20 },
+	'GraphikBold48': { 'file':'/app/fonts/GraphikBold.otf', 'size':48 },
+	'GraphikThin48': { 'file':'/app/fonts/GraphikThin.otf', 'size':48 },
+	'GraphikSemibold20': { 'file':'/app/fonts/GraphikSemibold.otf', 'size':20 },
 }
 
 IMAGES = {
