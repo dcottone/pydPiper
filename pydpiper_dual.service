@@ -1,0 +1,12 @@
+[Unit]
+Description = pydPiper
+Requires = docker.service
+After = mpd.service docker.service
+
+[Service]
+Restart = always
+ExecStart = /usr/bin/docker run --network=host --privileged -v /var/log:/var/log:rw -v /home/pi/pydPiper:/app:rw dhrone/pydpiper:v0.31-alpha python /app/pydPiper_dual.py
+
+[Install]
+WantedBy = multi-user.target
+
