@@ -35,7 +35,7 @@ WIDGETS = {
 	'samplerate': { 'type':'text', 'format':'{0}', 'variables':['samplerate'], 'font':'small', 'just':'right','varwidth':True, 'size':(40,8)},
 	'encoding': { 'type':'text', 'format':'{0}', 'variables':['encoding|upper'], 'font':'small', 'just':'right','varwidth':True, 'size':(40,8)},
 	'stopStatus': { 'type':'ttext', 'format':'STOP', 'font':'GraphikSemibold20', 'varwidth':True, 'just':'center', 'size':(128,20) },
-	'ttime': { 'type':'ttext', 'format':'{0}', 'variables':['localtime'], 'font':'GraphikThin28', 'just':'center', 'varwidth':True, 'size':(128,28) },
+	'ttime': { 'type':'ttext', 'format':'{0}', 'variables':['time'], 'font':'GraphikBold28', 'just':'center', 'varwidth':True, 'size':(128,28) },
 }
 
 # Assemble the widgets into canvases.  Only needed if you need to combine multiple widgets together so you can produce effects on them as a group.
