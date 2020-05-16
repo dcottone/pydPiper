@@ -466,7 +466,7 @@ class music_controller(threading.Thread):
 
         while not exitapp[0]:
 
-            current_ip = commands.getoutput(u"ip -4 route get 1 | head -1 | cut -d' ' -f8 | tr -d '\n'").strip()
+            current_ip = commands.getoutput(u"ip -4 route get 1 | head -1 | cut -d' ' -f7 | tr -d '\n'").strip()
 
             try:
                 with open(u"/sys/class/thermal/thermal_zone0/temp") as file:
