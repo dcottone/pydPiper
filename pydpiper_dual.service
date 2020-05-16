@@ -5,7 +5,7 @@ After = mpd.service
 [Service]
 Restart = always
 WorkingDirectory = /home/pi/pydPiper
-ExecStart = python /home/pi/pydPiper/pydPiper_dual.py
+ExecStart = /home/pi/pydPiper/start_displays_manager.sh
 ExecReload = /usr/bin/kill -HUP $MAINPID
 KillMode = process
 Restart = always
