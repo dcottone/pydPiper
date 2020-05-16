@@ -4,14 +4,14 @@ After = mpd.service
 
 [Service]
 Restart = always
-WorkingDirectory=/home/pi/pydPiper
+WorkingDirectory = /home/pi/pydPiper
 ExecStart = python /home/pi/pydPiper/pydPiper_dual.py
-ExecReload=/usr/bin/kill -HUP $MAINPID
-KillMode=process
-Restart=always
-RestartSec=10
-StartLimitInterval=30
-StartLimitBurst=20
+ExecReload = /usr/bin/kill -HUP $MAINPID
+KillMode = process
+Restart = always
+RestartSec = 10
+StartLimitInterval = 30
+StartLimitBurst = 20
 
 [Install]
 WantedBy = multi-user.target
