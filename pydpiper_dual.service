@@ -1,12 +1,14 @@
 [Unit]
 Description = DCAudio Dual Displays management
-After = mpd.service 
+After = mpd.service
 
 [Service]
 Restart = always
-WorkingDirectory = /home/pi/pydPiper
-ExecStart = /home/pi/pydPiper/start_displays_manager.sh
-ExecReload = /usr/bin/kill -HUP $MAINPID
+WorkingDirectory=/home/pi/pydPiper
+User=pi
+Group=pi
+ExecStart = python /home/pi/pydPiper/pydPiper_dual.py
+ExecReload=/usr/bin/kill -15 $MAINPID
 KillMode = process
 Restart = always
 RestartSec = 10
@@ -15,4 +17,3 @@ StartLimitBurst = 20
 
 [Install]
 WantedBy = multi-user.target
-
